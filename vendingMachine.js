@@ -15,7 +15,6 @@ const products = [
 ];
 
 module.exports = {
-
   insertCoin: function(coinType){
     const value = this.getAmount(coinType);
     this.increaseBalance(value);
@@ -34,17 +33,6 @@ module.exports = {
       return true;
     }
   },
-
-  getProducts: function() {
-    return products;
-  },
-
-  getProduct: function(productId) {
-    const product = products.find(function(p) { return p.id === productId; });
-    return product;
-  },
-
-
 
   vendProduct: function(productId){
     const product = this.getProduct(productId);
