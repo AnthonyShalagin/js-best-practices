@@ -1,12 +1,12 @@
 
-var changeHandler = require('./changeHandler');
-var productInventory = require('./productInventory');
-var balanceManager = require('./balanceManager');
+const changeHandler = require('./changeHandler');
+const productInventory = require('./productInventory');
+const balanceManager = require('./balanceManager');
 
-var balance = 0;
+const balance = 0;
 
 
-var products = [
+const products = [
   {
     name: 'Skittles',
     price: 85,
@@ -27,22 +27,22 @@ module.exports = {
       case 'n': return 5;
       case 'd': return 10;
       case 'q': return 25;
-      default: throw new Error('Unrecognized coin ' + coinType);
+      default: throw new Error(`Unrecognized coin ${  coinType}`);
     }
   },
 
-  getProducts: function() { 
+  getProducts: function() {
     return products;
   },
 
   getProduct: function(productId) {
-    var product = products.find(function(p) { return p.id === productId; });
+    const product = products.find(function(p) { return p.id === productId; });
     return product;
   },
-  
+
 
   insertCoin: function(coinType){
-    var value = this.getAmount(coinType);
+    const value = this.getAmount(coinType);
     this.increaseBalance(value);
   },
 
@@ -55,13 +55,13 @@ module.exports = {
   },
 
   releaseChange: function(){
-    var currentBalance = this.getBalance();
+    const currentBalance = this.getBalance();
     this.decreaseBalance(currentBalance);
     return this.convertToChange(currentBalance);
   },
 
   vendProduct: function(productId){
-    var product = this.getProduct(productId);
+    const product = this.getProduct(productId);
     this.decreaseBalance(product.price);
     return product;
   }

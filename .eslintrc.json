@@ -1,11 +1,3 @@
 {
   "extends": "cloudreach/es6"
 }
-
-in your `package.json`:
-
-{
-  "scripts": {
-    "lint": "eslint ."
-  }
-}
