@@ -16,18 +16,22 @@ const products = [
 
 module.exports = {
 
-  getAmount: function(coinType) {
-    // COINS:
-    // [p]enny
-    // [n]ickel
-    // [d]ime
-    // [q]uarter
-    switch(coinType){
-      case 'p': return 1;
-      case 'n': return 5;
-      case 'd': return 10;
-      case 'q': return 25;
-      default: throw new Error(`Unrecognized coin ${  coinType}`);
+  insertCoin: function(coinType){
+    const value = this.getAmount(coinType);
+    this.increaseBalance(value);
+  },
+
+  releaseChange: function(){
+    const currentBalance = this.getBalance();
+    this.decreaseBalance(currentBalance);
+    return this.convertToChange(currentBalance);
+  },
+
+  isValidAmount: function(amount){
+    if(amount === null){
+      return false;
+    } else {
+      return true;
     }
   },
 
@@ -41,24 +45,6 @@ module.exports = {
   },
 
 
-  insertCoin: function(coinType){
-    const value = this.getAmount(coinType);
-    this.increaseBalance(value);
-  },
-
-  isValidAmount: function(amount){
-    if(amount === null){
-      return false;
-    } else {
-      return true;
-    }
-  },
-
-  releaseChange: function(){
-    const currentBalance = this.getBalance();
-    this.decreaseBalance(currentBalance);
-    return this.convertToChange(currentBalance);
-  },
 
   vendProduct: function(productId){
     const product = this.getProduct(productId);
