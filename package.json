@@ -1,0 +1,23 @@
+{
+  "name": "js-best-practices",
+  "version": "1.0.0",
+  "description": "",
+  "main": "balanceManager.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnthonyShalagin/js-best-practices.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnthonyShalagin/js-best-practices/issues"
+  },
+  "homepage": "https://github.com/AnthonyShalagin/js-best-practices#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-cloudreach": "^1.0.0"
+  }
+}
