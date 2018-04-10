@@ -1,14 +1,14 @@
-var balance = 0;
+let balance = 0;
 
 module.exports = {
   increaseBalance: function(amount){
     balance += amount;
   },
-  getBalance: function(){ 
+  getBalance: function(){
     return balance;
   },
   canAfford: function(amount){
-    var errorMessage;
+    let errorMessage;
     if(!this.isValidAmount(amount)){
         errorMessage = 'Invalid Input';
     }

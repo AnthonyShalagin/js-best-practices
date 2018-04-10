@@ -3,18 +3,16 @@ const changeHandler = require('./changeHandler');
 const productInventory = require('./productInventory');
 const balanceManager = require('./balanceManager');
 
-const balance = 0;
-
 module.exports = {
   insertCoin: function(coinType){
-    const value = this.getAmount(coinType);
-    this.increaseBalance(value);
+    const value = changeHandler.getAmount(coinType);
+    balanceManager.increaseBalance(value);
   },
 
   releaseChange: function(){
-    const currentBalance = this.getBalance();
-    this.decreaseBalance(currentBalance);
-    return this.convertToChange(currentBalance);
+    const currentBalance = balanceManager.getBalance();
+    balanceManager.decreaseBalance(currentBalance);
+    return changeHandler.convertToChange(currentBalance);
   },
 
   isValidAmount: function(amount){
@@ -26,8 +24,8 @@ module.exports = {
   },
 
   vendProduct: function(productId){
-    const product = this.getProduct(productId);
-    this.decreaseBalance(product.price);
+    const product = productInventory.getProduct(productId);
+    balanceManager.decreaseBalance(product.price);
     return product;
   }
 
