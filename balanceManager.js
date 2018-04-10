@@ -1,34 +1,36 @@
-let balance = 0;
+var balance = 0;
 
 module.exports = {
-	canAfford: function(amount){
-		if(!this.isValidAmount(amount)){
-			errorMessage = 'Invalid Input';
-		}
-		if(errorMessage){
-			throw new Error(errorMessage);
-		}
-		return amount <= balance;
-	},
-
-	decreaseBalance: function(amount){
-	// This method decreases the balance of the vending machine. If the balance amount is not
-	// enough to cover the purchase, the method throws an error.
-		let errorMessage;
-		if(!this.canAfford(amount)){
-			errorMessage = 'Insufficient balance';
-		}
-		if(errorMessage){
-			throw new Error(errorMessage);
-		}
-		balance -= amount;
-	},
-
-	getBalance: function(){
-		return balance;
-	},
-
-	increaseBalance: function(amount){
-		balance += amount;
-	}
+  increaseBalance: function(amount){
+    balance += amount;
+  },
+  getBalance: function(){ 
+    return balance;
+  },
+  canAfford: function(amount){
+    var errorMessage;
+    if(!this.isValidAmount(amount)){
+        errorMessage = 'Invalid Input';
+    }
+    if(errorMessage){
+        throw new Error(errorMessage);
+    }
+    return amount <= balance;
+  },
+  decreaseBalance: function(amount){
+    if(!this.canAfford(amount)){
+      var errorMessage = 'Insufficient balance';
+    }
+    if(errorMessage){
+      throw new Error(errorMessage);
+    }
+    balance -= amount;
+  },
+  isValidAmount: function(amount){
+    if(!amount){
+      return false;
+    } else {
+      return true;
+    }
+  }
 };
